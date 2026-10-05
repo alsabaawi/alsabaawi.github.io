@@ -36,7 +36,7 @@
           <li><a href="#about" class="nav-link">About</a></li>
           <li><a href="#news" class="nav-link">News</a></li>
           <li><a href="#publications" class="nav-link">Publications</a></li>
-          <li><a href="#projects" class="nav-link">Software & Benchmarks</a></li>
+          <li><a href="#research" class="nav-link">Research</a></li>
           <li><a href="#service" class="nav-link">Teaching & Service</a></li>
           <li><a href="#cv" class="nav-link">CV</a></li>
           <li><a href="#contact" class="nav-link">Contact</a></li>
@@ -165,7 +165,7 @@
               My academic trajectory bridges a strong theoretical foundation in <strong>Mathematics (BSc, Mustansiriyah University)</strong> and <strong>Data Security (High Diploma, UoITC)</strong> with applied advanced cybersecurity engineering <strong>(Master of Information Technology in Cybersecurity, QUT)</strong>. In 2025, I was honored with an <strong>Associate Fellowship of Advance HE (AFHEA)</strong> in recognition of my commitment to educational quality and higher education pedagogy.
             </p>
             <p>
-              My research lies at the intersection of <strong>Large Language Models (LLMs)</strong>, <strong>automated software vulnerability detection</strong>, and <strong>trustworthy AI security</strong>. I develop high-assurance frameworks (such as <em>AutoResearch-Sec</em> and <em>X-SecEnsemble</em>) and rigorous benchmark suites across thousands of real-world and synthetic vulnerabilities (JavaVulBench, NIST Juliet, and Project-KB) to evaluate, explain, and advance model performance in mission-critical environments.
+              My research lies at the intersection of <strong>Artificial Intelligence, Cybersecurity, and Software Safety</strong>. I investigate how machine learning and foundation models can be rigorously evaluated, made trustworthy, and deployed for automated vulnerability detection and proactive defense in high-assurance environments.
             </p>
           </div>
 
@@ -218,17 +218,6 @@
         </div>
 
         <div class="news-list">
-          <div class="news-item">
-            <div class="news-date">
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-              <span>Sep 2026</span>
-            </div>
-            <div class="news-content">
-              <span class="news-tag publication">Benchmark</span>
-              Released <strong>AutoResearch-Sec Cross-Dataset Benchmark</strong> evaluating 17 state-of-the-art foundation models (including Gemma 3, Llama 3.1, Qwen 3.5, and DeepSeek R1) across 2,750 curated code instances on NIST Juliet, JavaVulBench, and Project-KB.
-            </div>
-          </div>
-
           <div class="news-item">
             <div class="news-date">
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
@@ -306,44 +295,7 @@
         <!-- Publications List -->
         <div class="pub-list" id="publications-list">
 
-          <!-- Paper 1: AutoResearch-Sec Benchmark 2026 -->
-          <article class="pub-card" data-category="ai-sec preprint">
-            <div class="pub-header">
-              <h3 class="pub-title">AutoResearch-Sec: Cross-Dataset Zero-Shot Vulnerability Benchmark Across 17 Foundation Models</h3>
-              <div class="pub-badge-group">
-                <span class="pub-badge software">Benchmark</span>
-                <span class="pub-badge preprint">2026</span>
-              </div>
-            </div>
-            <div class="pub-authors">
-              <span class="pub-author-me">Aiman Al-Sabaawi</span>
-            </div>
-            <div class="pub-venue">Software Artifact, Datasets &amp; Evaluation Benchmark Suite, 2026</div>
-            <div class="pub-abstract">
-              A comprehensive empirical evaluation framework benchmarked across 17 foundation models (including Gemma 3, Llama 3.1, CodeLlama, Qwen 3.5, and DeepSeek R1) over 2,750 real-world and synthetic vulnerability samples from NIST Juliet, JavaVulBench, and Project-KB, establishing baseline metrics and error analysis for automated vulnerability detection.
-            </div>
-            <div class="pub-actions">
-              <a href="https://github.com/alsabaawi/AutoResearch-Sec" target="_blank" rel="noopener noreferrer" class="pub-action-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-                Code &amp; Suite
-              </a>
-              <button class="pub-action-btn toggle-bibtex-btn" data-target="bib-autoresearch">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
-                BibTeX
-              </button>
-            </div>
-            <div class="bibtex-block" id="bib-autoresearch">
-              <button class="bibtex-copy-btn">Copy</button>
-              <code>@software{alsabaawi2026autoresearch,
-  title={AutoResearch-Sec: Multi-LLM Software Vulnerability Benchmark Suite & Automated Security Evaluation},
-  author={Al-Sabaawi, Aiman},
-  year={2026},
-  url={https://github.com/alsabaawi/AutoResearch-Sec}
-}</code>
-            </div>
-          </article>
-
-          <!-- Paper 2: Data Scarcity Survey 2023 (1300+ citations) -->
+          <!-- Paper 1: Data Scarcity Survey 2023 (1300+ citations) -->
           <article class="pub-card" data-category="ai-sec journal">
             <div class="pub-header">
               <h3 class="pub-title">A Survey on Deep Learning Tools Dealing with Data Scarcity: Definitions, Challenges, Solutions, Tips, and Applications</h3>
@@ -718,93 +670,92 @@
       </div>
     </section>
 
-    <!-- Section 3: Research Software & Datasets Showcase -->
-    <section id="projects" class="section">
+    <!-- Section 3: Research Themes & Focus Areas -->
+    <section id="research" class="section">
       <div class="container">
         <div class="section-header">
           <div class="section-title-wrap">
-            <span class="section-tag">Open Science</span>
-            <h2 class="section-title">Research Software &amp; Datasets</h2>
+            <span class="section-tag">Specialization</span>
+            <h2 class="section-title">Research Focus &amp; Core Themes</h2>
           </div>
-          <span class="section-subtitle">Open-source tools, benchmark evaluation suites, and datasets</span>
+          <span class="section-subtitle">Academic focus areas across cybersecurity, artificial intelligence, and software safety</span>
         </div>
 
         <div class="project-grid">
 
-          <!-- Project 1: AutoResearch-Sec -->
+          <!-- Theme 1 -->
           <div class="project-card">
             <div>
               <div class="project-header">
-                <h3 class="project-title">AutoResearch-Sec</h3>
-                <span class="pub-badge software">Framework</span>
+                <h3 class="project-title">AI &amp; Foundation Models in Software Security</h3>
+                <span class="pub-badge journal">Core Focus</span>
               </div>
               <p class="project-desc">
-                An automated research framework for cybersecurity vulnerability detection and repair using multi-LLM orchestration. Integrates high-performance zero-shot evaluation, knowledge graphs, static code metrics, and consensus ensembles.
+                Investigating deep neural networks, large language models, and automated reasoning techniques for identifying vulnerabilities in complex software codebases, evaluating zero-shot detection reliability, and mitigating prompt and output hallucinations in safety-critical audit pipelines.
               </p>
-              <div class="project-stats-grid">
-                <div>
-                  <div class="project-stat-num">17</div>
-                  <div class="project-stat-label">LLMs Supported</div>
-                </div>
-                <div>
-                  <div class="project-stat-num">2,750+</div>
-                  <div class="project-stat-label">Samples Tested</div>
-                </div>
-                <div>
-                  <div class="project-stat-num">3</div>
-                  <div class="project-stat-label">Corpora Integrated</div>
-                </div>
-              </div>
               <div class="project-tech-tags">
-                <span class="tech-tag">Python</span>
-                <span class="tech-tag">PyTorch</span>
-                <span class="tech-tag">vLLM / Ollama</span>
-                <span class="tech-tag">HPC / GPU</span>
+                <span class="tech-tag">Vulnerability Auditing</span>
+                <span class="tech-tag">LLM Reasoning</span>
+                <span class="tech-tag">Code Analysis</span>
+                <span class="tech-tag">Static Verification</span>
               </div>
-            </div>
-            <div class="pub-actions">
-              <a href="https://github.com/alsabaawi/AutoResearch-Sec" target="_blank" rel="noopener noreferrer" class="pub-action-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-                View Repository
-              </a>
             </div>
           </div>
 
-          <!-- Project 2: X-SecEnsemble -->
+          <!-- Theme 2 -->
           <div class="project-card">
             <div>
               <div class="project-header">
-                <h3 class="project-title">X-SecEnsemble</h3>
-                <span class="pub-badge software">Multi-LLM Suite</span>
+                <h3 class="project-title">Trustworthy, Robust &amp; Explainable AI</h3>
+                <span class="pub-badge journal">Core Focus</span>
               </div>
               <p class="project-desc">
-                Ensemble reasoning architecture combining heterogeneous open-weight LLMs (Gemma, Llama, Qwen, DeepSeek) for cross-verifying software vulnerabilities, achieving higher precision and reducing hallucinated false alarms.
+                Developing methodological criteria and algorithmic techniques to overcome critical machine learning challenges, notably data scarcity, adversarial vulnerabilities, and interpretability in critical infrastructure and healthcare informatics.
               </p>
-              <div class="project-stats-grid">
-                <div>
-                  <div class="project-stat-num">0.631</div>
-                  <div class="project-stat-label">Top Mean F1</div>
-                </div>
-                <div>
-                  <div class="project-stat-num">Zero-Shot</div>
-                  <div class="project-stat-label">Generalization</div>
-                </div>
-                <div>
-                  <div class="project-stat-num">Multi-GPU</div>
-                  <div class="project-stat-label">Parallel Pipeline</div>
-                </div>
-              </div>
               <div class="project-tech-tags">
-                <span class="tech-tag">Transformers</span>
-                <span class="tech-tag">Ensemble Voting</span>
-                <span class="tech-tag">Vulnerability Audit</span>
+                <span class="tech-tag">Data Scarcity</span>
+                <span class="tech-tag">Explainable AI (XAI)</span>
+                <span class="tech-tag">Trustworthy AI</span>
+                <span class="tech-tag">Model Regularization</span>
               </div>
             </div>
-            <div class="pub-actions">
-              <a href="https://github.com/alsabaawi/AutoResearcher-Smaller-is-Better" target="_blank" rel="noopener noreferrer" class="pub-action-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-                View Repository
-              </a>
+          </div>
+
+          <!-- Theme 3 -->
+          <div class="project-card">
+            <div>
+              <div class="project-header">
+                <h3 class="project-title">Mobile &amp; IoT Device Digital Forensics</h3>
+                <span class="pub-badge conference">Core Focus</span>
+              </div>
+              <p class="project-desc">
+                Empirical forensic investigation of mobile operating systems, Android file systems, and wearable IoT devices (such as Fitbit hardware), analyzing data storage structures, evidence acquisition methodologies, and cryptographic data recovery protocols.
+              </p>
+              <div class="project-tech-tags">
+                <span class="tech-tag">Android Forensics</span>
+                <span class="tech-tag">IoT Security</span>
+                <span class="tech-tag">Storage Forensics</span>
+                <span class="tech-tag">Data Carving</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Theme 4 -->
+          <div class="project-card">
+            <div>
+              <div class="project-header">
+                <h3 class="project-title">Applied Cryptography &amp; Cryptanalysis</h3>
+                <span class="pub-badge conference">Core Focus</span>
+              </div>
+              <p class="project-desc">
+                Theoretical exploration and algorithmic implementation of cryptanalysis methods spanning classical ciphers, Vigen&egrave;re, stream ciphers, and block cipher architectures, assessing computational complexity and cryptographic resilience.
+              </p>
+              <div class="project-tech-tags">
+                <span class="tech-tag">Block Ciphers</span>
+                <span class="tech-tag">Stream Ciphers</span>
+                <span class="tech-tag">Cryptanalysis</span>
+                <span class="tech-tag">Mathematical Cryptography</span>
+              </div>
             </div>
           </div>
 
@@ -1147,7 +1098,7 @@
       <div class="footer-links">
         <a href="#about" class="footer-link">About</a>
         <a href="#publications" class="footer-link">Publications</a>
-        <a href="#projects" class="footer-link">Projects</a>
+        <a href="#research" class="footer-link">Research</a>
         <a href="#cv" class="footer-link">CV</a>
         <a href="https://github.com/alsabaawi/alsabaawi.github.io" target="_blank" rel="noopener noreferrer" class="footer-link">Source Code</a>
       </div>

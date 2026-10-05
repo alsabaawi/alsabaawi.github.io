@@ -15,7 +15,7 @@ Live at: **[alsabaawi.github.io](https://alsabaawi.github.io)**
   - Category filter pills (All, AI & Cybersecurity, Journals, Conferences, Preprints).
   - 1-click **BibTeX modal** with instant clipboard copy and feedback toast.
   - Direct links to DOI, arXiv, and code repositories.
-- **Research Software & Datasets**: Highlighted project cards for `AutoResearch-Sec`, `X-SecEnsemble`, benchmark suites, and GitHub metrics.
+- **Research Focus & Core Themes**: Dedicated sections for AI-assisted vulnerability detection, trustworthy AI, mobile forensics, and cryptanalysis.
 - **News & Milestones**: Structured timeline for awards, appointments, and research releases.
 - **Teaching, Editorial & Academic Service**: Clear highlights for APIC, QUT, AFHEA fellowship, editorial boards, and professional memberships (IEEE, ACS, AISA, IACR, AustMS).
 - **Curriculum Vitae (CV)**:
