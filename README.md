@@ -49,16 +49,28 @@ alsabaawi.github.io/
 
 ---
 
-## ✏️ How to Maintain and Update
+## ⚡ Automated Site Maintenance Tool (`update_site.py`)
 
-### 1. Adding a New Publication
-In `index.html`, add a new `<article class="pub-card" data-category="...">` block inside `<div class="pub-list">`. You can assign tags like `ai-sec`, `journal`, `conference`, or `preprint`. Also add the BibTeX entry to `assets/bibtex/publications.bib`.
+A built-in script is included to automatically update Scholar metrics, citations, publications, and BibTeX database.
 
-### 2. Adding a News Item
-In `index.html`, add a `<div class="news-item">` block inside `<div class="news-list">` with the date, badge tag (`publication`, `award`, `appointment`), and summary.
+### Run Interactive Menu:
+```bash
+python3 update_site.py
+```
 
-### 3. Updating Profile Information or Links
-Modify the relevant section in `index.html` (e.g., hero social links, affiliation list, or contact information).
+### Quick Commands:
+```bash
+python3 update_site.py --metrics    # Fetch live citations, h-index, i10-index from Google Scholar
+python3 update_site.py --add        # Wizard to add a new paper to HTML & BibTeX
+python3 update_site.py --sync-bib   # Sync assets/bibtex/publications.bib from index.html
+python3 update_site.py --push       # Git commit and push changes to GitHub Pages
+python3 update_site.py --notify     # Send status notification to ntfy.sh/HPC
+python3 update_site.py --all        # Complete pipeline: update metrics, sync bib, push & notify
+```
+
+---
+
+## ✏️ Manual Maintenance and Updates
 
 ---
 
