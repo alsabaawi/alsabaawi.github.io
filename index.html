@@ -23,63 +23,10 @@
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="icon" type="image/jpeg" href="assets/images/avatar.jpg">
 
-  <!-- Search Engine Protection while in Private Review -->
-  <meta name="robots" content="noindex, nofollow, noarchive">
-
-  <!-- Private Review Lock Guard (Zero-Flash synchronous pre-check) -->
-  <style id="private-lock-style">
-    html:not(.is-auth) body:not(.authenticated) > *:not(#private-auth-gate) {
-      display: none !important;
-    }
-    html:not(.is-auth) body:not(.authenticated) {
-      overflow: hidden !important;
-      background: #0b1120 !important;
-    }
-  </style>
-  <script>
-    if (sessionStorage.getItem('site_auth') === 'verified' || localStorage.getItem('site_auth') === 'verified') {
-      document.documentElement.classList.add('is-auth');
-    }
-  </script>
+  <!-- SEO & Search Engine Indexing -->
+  <meta name="robots" content="index, follow">
 </head>
 <body>
-
-  <!-- Private Review Mode Auth Gate -->
-  <div id="private-auth-gate" class="auth-gate-overlay">
-    <div class="auth-gate-card">
-      <div class="auth-gate-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-        </svg>
-      </div>
-      <span class="auth-gate-badge">Private Review Mode</span>
-      <h1 class="auth-gate-title">Site Under Review</h1>
-      <p class="auth-gate-desc">This website is currently private while recent updates are being reviewed. Enter your passcode to view the preview.</p>
-      
-      <form id="auth-gate-form" class="auth-gate-form" onsubmit="event.preventDefault(); verifyPasscode();">
-        <div class="auth-input-wrapper">
-          <input type="password" id="auth-passcode" class="auth-gate-input" placeholder="Enter review passcode..." autocomplete="current-password" autofocus required>
-          <button type="submit" class="auth-gate-btn" id="auth-submit-btn">
-            <span>Unlock</span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </button>
-        </div>
-        <div id="auth-error-msg" class="auth-error-msg" style="display: none;">
-          Incorrect passcode. Please try again.
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <!-- Discreet Floating Badge during Review -->
-  <div id="private-review-banner" class="private-review-banner" style="display: none;">
-    <span>🔒 Private Review Mode</span>
-    <button type="button" onclick="lockSite();" class="private-relock-btn" title="Lock and require passcode again">Lock</button>
-  </div>
 
   <!-- Navigation Header -->
   <header class="site-header">
