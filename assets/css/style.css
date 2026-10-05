@@ -480,6 +480,11 @@ body {
   border-color: #004071;
 }
 
+.social-icon-btn.btn-eprints:hover {
+  background: #005696;
+  border-color: #005696;
+}
+
 .social-icon-btn.btn-linkedin:hover {
   background: #0A66C2;
   border-color: #0A66C2;
