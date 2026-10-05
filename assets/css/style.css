@@ -716,6 +716,17 @@ body {
   color: #86efac;
 }
 
+.pub-badge.citations {
+  background: #fdf2f8;
+  color: #9d174d;
+  border: 1px solid #fbcfe8;
+}
+[data-theme="dark"] .pub-badge.citations {
+  background: rgba(253, 242, 248, 0.15);
+  color: #f472b6;
+  border-color: rgba(244, 114, 182, 0.3);
+}
+
 .pub-authors {
   font-size: 0.95rem;
   color: var(--text-secondary);
