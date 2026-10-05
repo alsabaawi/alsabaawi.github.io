@@ -363,6 +363,158 @@ body {
   border-color: var(--accent-hover);
 }
 
+/* Circular Icon Buttons with Tooltips */
+.social-icon-btn {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+  flex-shrink: 0;
+}
+
+.social-icon-btn svg {
+  width: 20px;
+  height: 20px;
+  transition: transform var(--transition-fast);
+}
+
+.social-icon-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  color: #ffffff !important;
+}
+
+.social-icon-btn:hover svg {
+  transform: scale(1.1);
+  fill: currentColor;
+}
+
+/* Tooltip on hover */
+.social-icon-btn::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 9px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  padding: 5px 11px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+  background: rgba(15, 23, 42, 0.94);
+  backdrop-filter: blur(6px);
+  border-radius: 6px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
+  z-index: 100;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.social-icon-btn::before {
+  content: '';
+  position: absolute;
+  bottom: calc(100% + 3px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  border: 6px solid transparent;
+  border-top-color: rgba(15, 23, 42, 0.94);
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
+  z-index: 100;
+}
+
+.social-icon-btn:hover::after,
+.social-icon-btn:hover::before {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Distinct Brand Hover Colors */
+.social-icon-btn.btn-scholar:hover {
+  background: #4285F4;
+  border-color: #4285F4;
+}
+
+.social-icon-btn.btn-scopus:hover {
+  background: #EB6B00;
+  border-color: #EB6B00;
+}
+
+.social-icon-btn.btn-ieee:hover {
+  background: #00629B;
+  border-color: #00629B;
+}
+
+.social-icon-btn.btn-orcid:hover {
+  background: #A6CE39;
+  border-color: #A6CE39;
+}
+
+.social-icon-btn.btn-rg:hover {
+  background: #00CCBB;
+  border-color: #00CCBB;
+}
+
+.social-icon-btn.btn-sciprofiles:hover {
+  background: #0ea5e9;
+  border-color: #0ea5e9;
+}
+
+.social-icon-btn.btn-qut:hover {
+  background: #004071;
+  border-color: #004071;
+}
+
+.social-icon-btn.btn-linkedin:hover {
+  background: #0A66C2;
+  border-color: #0A66C2;
+}
+
+.social-icon-btn.btn-medium:hover {
+  background: #12100E;
+  border-color: #12100E;
+}
+
+.social-icon-btn.btn-apic:hover {
+  background: #9E1B32;
+  border-color: #9E1B32;
+}
+
+.social-icon-btn.btn-heli:hover {
+  background: #1e3a8a;
+  border-color: #1e3a8a;
+}
+
+.social-icon-btn.btn-github:hover {
+  background: #24292e;
+  border-color: #24292e;
+}
+
+.social-icon-btn.btn-email:hover {
+  background: #ea4335;
+  border-color: #ea4335;
+}
+
+.social-icon-btn.btn-cv:hover {
+  background: var(--accent-primary);
+  border-color: var(--accent-primary);
+}
+
 /* Quick Metrics Banner */
 .metrics-banner {
   background: var(--bg-card);
