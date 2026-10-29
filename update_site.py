@@ -20,6 +20,7 @@ Usage:
 import sys
 import os
 import re
+import html as html_lib
 import datetime
 import urllib.request
 import urllib.parse
@@ -59,12 +60,17 @@ def log_error(msg):
     print(f"{RED}[ERROR]{RESET} {msg}")
 
 
+def _norm_title(s):
+    s = html_lib.unescape(s).lower()
+    return re.sub(r'[^a-z0-9]+', ' ', s).strip()
+
+
 # ==============================================================================
 # 1. Google Scholar Metrics Fetcher
 # ==============================================================================
 def fetch_scholar_metrics(user_id=SCHOLAR_USER_ID):
-    """Fetches total citations, h-index, and i10-index from Google Scholar."""
-    url = f"https://scholar.google.com/citations?user={user_id}&hl=en"
+    """Fetches total citations, h-index, i10-index, and per-paper citations from Google Scholar."""
+    url = f"https://scholar.google.com/citations?user={user_id}&hl=en&cstart=0&pagesize=100"
     headers = {
         'User-Agent': (
             'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 '
@@ -76,6 +82,15 @@ def fetch_scholar_metrics(user_id=SCHOLAR_USER_ID):
     try:
         with urllib.request.urlopen(req, timeout=12) as resp:
             html = resp.read().decode('utf-8', errors='ignore')
+
+        paper_citations = {}
+        rows = re.findall(r'<tr class="gsc_a_tr">(.*?)</tr>', html, re.DOTALL)
+        for r in rows:
+            t_m = re.search(r'class="gsc_a_at"[^>]*>(.*?)</a>', r)
+            c_m = re.search(r'class="gsc_a_ac[^"]*"[^>]*>(.*?)</a>', r)
+            if t_m:
+                c_val = int(c_m.group(1).strip()) if (c_m and c_m.group(1).strip().isdigit()) else 0
+                paper_citations[_norm_title(t_m.group(1))] = c_val
 
         table_m = re.search(r'<table id="gsc_rsb_st".*?>(.*?)</table>', html, re.DOTALL)
         if table_m:
@@ -89,6 +104,7 @@ def fetch_scholar_metrics(user_id=SCHOLAR_USER_ID):
                     'citations': cites,
                     'h_index': h_index,
                     'i10_index': i10_index,
+                    'paper_citations': paper_citations,
                     'raw_html': html
                 }
 
@@ -103,7 +119,7 @@ def fetch_scholar_metrics(user_id=SCHOLAR_USER_ID):
 # 2. Update Metrics in index.html
 # ==============================================================================
 def update_metrics(cites=None, h_index=None, i10_index=None):
-    """Updates the metrics banner in index.html (Citations, h-index, Pub count)."""
+    """Updates the metrics banner and individual paper citation badges in index.html."""
     if not os.path.exists(INDEX_FILE):
         log_error(f"Cannot find {INDEX_FILE}")
         return False
@@ -116,6 +132,7 @@ def update_metrics(cites=None, h_index=None, i10_index=None):
     pub_count = len(pub_cards)
     log_info(f"Detected {pub_count} publication cards in index.html")
 
+    paper_citations = {}
     # If metrics not provided, try fetching live from Google Scholar
     if cites is None or h_index is None or i10_index is None:
         stats = fetch_scholar_metrics()
@@ -123,11 +140,12 @@ def update_metrics(cites=None, h_index=None, i10_index=None):
             cites = stats['citations']
             h_index = stats['h_index']
             i10_index = stats['i10_index']
+            paper_citations = stats.get('paper_citations', {})
         else:
             print(f"\n{YELLOW}Could not fetch automatic metrics from Google Scholar.{RESET}")
             try:
-                c_input = input("Enter total citations [default 1867]: ").strip()
-                cites = int(c_input) if c_input else 1867
+                c_input = input("Enter total citations [default 1899]: ").strip()
+                cites = int(c_input) if c_input else 1899
                 h_input = input("Enter h-index [default 10]: ").strip()
                 h_index = int(h_input) if h_input else 10
                 i_input = input("Enter i10-index [default 11]: ").strip()
@@ -153,6 +171,46 @@ def update_metrics(cites=None, h_index=None, i10_index=None):
     pattern_pub = r'(<div class="metric-number">)[^<]*(</div>\s*<div class="metric-label">Publications &amp; Software</div>)'
     html, n_p = re.subn(pattern_pub, rf'\g<1>{pub_str}\g<2>', html)
 
+    # Update individual publication citation badges if live paper_citations available
+    updated_papers = 0
+    if paper_citations:
+        def _update_card(match):
+            nonlocal updated_papers
+            card = match.group(0)
+            t_m = re.search(r'<h3 class="pub-title">(.*?)</h3>', card, re.DOTALL)
+            if not t_m:
+                return card
+            nt = _norm_title(t_m.group(1))
+            c_val = paper_citations.get(nt)
+            if c_val is None:
+                for st, sc in paper_citations.items():
+                    if st.startswith(nt[:35]) or nt.startswith(st[:35]):
+                        c_val = sc
+                        break
+            if not c_val or c_val <= 0:
+                return card
+            label = f"{c_val:,} Citation" if c_val == 1 else f"{c_val:,} Citations"
+            badge_html = f'<span class="pub-badge citations">{label}</span>'
+            if '<span class="pub-badge citations">' in card:
+                new_card = re.sub(
+                    r'<span class="pub-badge citations">[^<]*</span>',
+                    badge_html,
+                    card,
+                    count=1
+                )
+            else:
+                new_card = re.sub(
+                    r'(<div class="pub-badge-group">\s*)',
+                    rf'\g<1>{badge_html}\n                ',
+                    card,
+                    count=1
+                )
+            if new_card != card:
+                updated_papers += 1
+            return new_card
+
+        html = re.sub(r'<article class="pub-card".*?</article>', _update_card, html, flags=re.DOTALL)
+
     with open(INDEX_FILE, 'w', encoding='utf-8') as f:
         f.write(html)
 
@@ -160,6 +218,8 @@ def update_metrics(cites=None, h_index=None, i10_index=None):
     print(f"   • Scholar Citations: {cites_str}")
     print(f"   • h-index / i10-index: {h_i10_str}")
     print(f"   • Publications & Software: {pub_str}")
+    if paper_citations:
+        print(f"   • Individual paper citation badges updated: {updated_papers}")
     return True
 
 
@@ -373,7 +433,7 @@ def deploy_changes(custom_msg=None):
         custom_msg = input(f"\n{BOLD}Commit message [{default_msg}]:{RESET} ").strip() or default_msg
 
     try:
-        subprocess.run(['git', 'add', 'index.html', 'assets/bibtex/publications.bib'], check=True, cwd=SITE_DIR)
+        subprocess.run(['git', 'add', 'index.html', 'assets/bibtex/publications.bib', 'update_site.py'], check=True, cwd=SITE_DIR)
         # Check if anything staged
         diff_cached = subprocess.run(['git', 'diff', '--cached', '--quiet'], cwd=SITE_DIR)
         if diff_cached.returncode != 0:
