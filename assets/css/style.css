@@ -455,6 +455,11 @@ body {
   border-color: #EB6B00;
 }
 
+.social-icon-btn.btn-wos:hover {
+  background: #5E33BF;
+  border-color: #5E33BF;
+}
+
 .social-icon-btn.btn-ieee:hover {
   background: #00629B;
   border-color: #00629B;
